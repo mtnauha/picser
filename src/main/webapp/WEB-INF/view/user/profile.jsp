@@ -236,15 +236,17 @@
                 }
             });
             
-            var fileNum = 0;
+            var filesReady = 0;
             var filesTotal = 0;
             
             function getAsDataURL(files) {
                 
+                filesReady = 0;
+                
                 // Loop through the FileList
                 filesTotal = files.length;
+                
                 for (var i = 0; i < filesTotal; i++) {
-                    fileNum = i;
                     var f = files[i];
                     
                     // Only process image files.
@@ -323,9 +325,10 @@
 
             function uploadComplete(evt) {
                 //This event is raised when the server send back a response
+                filesReady++;
                 
                 //Reload page after sending all images
-                if(fileNum >= (filesTotal-1))
+                if(filesReady >= (filesTotal-1))
                     location.reload();
             }
 
