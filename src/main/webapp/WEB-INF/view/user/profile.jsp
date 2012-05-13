@@ -272,18 +272,6 @@
                 }
             }
             
-            function updateProgress(evt) {
-                if (evt.lengthComputable) {
-
-                    var percentLoaded = Math.round((evt.loaded / evt.total) * 100);
-
-                    if (percentLoaded <= 100) {
-                        // Increase the prog bar length
-                        $("#progressbar").css({width: percentLoaded + "%"});
-                    }
-                }
-            }
-            
             function sendData(theFile, description) {
                 var data = new FormData();
                 data.append("description", description);
@@ -322,7 +310,7 @@
                 filesReady++;
                 
                 //Reload page after sending all images
-                if(filesReady >= (filesTotal-1))
+                if(filesReady >= (filesTotal))
                     location.reload();
             }
 
