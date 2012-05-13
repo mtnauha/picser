@@ -20,6 +20,12 @@ public class HomeController {
         return "home";
     }
 
+    @RequestMapping(value = "/login")
+    public String login() {
+
+        return "login";
+    }
+
     @RequestMapping(value = "/register")
     public String register(Model model) {
         model.addAttribute("user", new User());
@@ -36,5 +42,4 @@ public class HomeController {
     public String error(Model model) {
         return "error";
     }
-
 }

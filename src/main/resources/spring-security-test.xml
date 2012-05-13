@@ -17,7 +17,7 @@
         <!-- huom! kun teet sovellusta tuotantokäyttöä varten, permitAll-oletus ei ole hyvä idea! /** -->
         
         <!-- näytä kirjautumislomake tarvittaessa -->
-        <form-login login-page="/login" />
+        <form-login />
         <!-- mahdollisuus logouttiin, ohjaus logoutin jälkeen osoitteeseen /home -->
         <logout logout-success-url="/home" />
     </http>

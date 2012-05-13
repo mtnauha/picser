@@ -1,11 +1,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Wadharkka</title>
+        <title>Picser</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -44,14 +43,10 @@
                     <a class="brand" href="#">Wadharkka</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li><a href="${pageContext.request.contextPath}/user/home">Home</a></li>
-                            <li><a href="${pageContext.request.contextPath}/user/search">Search</a></li>
-                            <li class="active"><a href="${pageContext.request.contextPath}/user/userlist">List all users</a></li>
-
+                            <li><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                            <li><a href="#">Register</a></li>
                             <li class="divider-vertical"></li>
-
-                            <li><a href="${pageContext.request.contextPath}/user/profile/${principalName}">${principalName}</a></li>
-                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+                            <li class="active"><a href="user/home">Login</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -61,34 +56,28 @@
         <div class="container">
 
             <div class="row">
-                <div class="span12">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Username</th>
-                                <th>Picture</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <c:forEach var="user" items="${users}">
-                                <tr>
-                                    <td><h2><a class="userlist" href="profile/${user.username}">${user.username}</a></h2></td>
-                                    <td class="span2">
-                                        <a href="profile/${user.username}" class="thumbnail span1">
-                                            <c:choose>
-                                                <c:when test="${user.hasProfileImage}">
-                                                    <img src="${pageContext.request.contextPath}/image/${user.profileId}" />
-                                                </c:when>
-                                                <c:otherwise>
-                                                    Profile
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                        </tbody>
-                    </table>
+                <div class="span8">
+                    <form action="<c:url value='/j_spring_security_check'/>" method="POST">
+                        <fieldset>
+                            <legend>Login</legend>
+                            <div class="control-group">
+                                <label class="control-label" for="username">Username</label>
+                                <div class="controls">
+                                    <input type="text" class="input-xlarge" id="username" name="j_username">
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label" for="password">Password</label>
+                                <div class="controls">
+                                    <input type="password" class="input-xlarge" id="password" name="j_password" />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" value="Login">Login</button>
+                                <a class="btn" href="${pageContext.request.contextPath}/home">Back</a>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
 

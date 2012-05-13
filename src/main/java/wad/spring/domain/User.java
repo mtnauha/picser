@@ -28,7 +28,7 @@ public class User implements Serializable {
     @CascadeOnDelete
     private List<Image> images;
     private Long profileId;
-    private boolean hasProfileImage;
+    private boolean hasProfileImage = false;
 
     public void addImage(Image image) {
         if (!images.contains(image)) {
@@ -96,5 +96,9 @@ public class User implements Serializable {
 
     public boolean getHasProfileImage() {
         return hasProfileImage;
+    }
+
+    public void setHasProfileImage(boolean hasProfileImage) {
+        this.hasProfileImage = hasProfileImage;
     }
 }

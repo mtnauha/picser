@@ -73,7 +73,6 @@ public class ImageController {
 
         return "user/profile";
     }
-
 //    @RequestMapping(value = "/image/getprofile/{username}", method = RequestMethod.GET)
 //    @ResponseBody
 //    public byte[] getProfileImage(@PathVariable String username) {

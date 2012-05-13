@@ -68,13 +68,13 @@ public class ImageServiceImpl implements ImageService{
         return imageRepository.findOne(imageId);
     }
     
-    @Override
-    public byte[] getProfileImage(String username) {
-        if(userRepository.findByUsername(username).getHasProfileImage())
-            return getImageFile(userRepository.findByUsername(username).getProfileId());
-        else
-            return null;
-    }
+//    @Override
+//    public byte[] getProfileImage(String username) {
+//        if(userRepository.findByUsername(username).getHasProfileImage())
+//            return getImageFile(userRepository.findByUsername(username).getProfileId());
+//        else
+//            return null;
+//    }
     
     @Override
     @Transactional
@@ -82,6 +82,7 @@ public class ImageServiceImpl implements ImageService{
         User user = userRepository.findByUsername(username);
         
         user.setProfileId(imageId);
+        user.setHasProfileImage(true);
     }
     
     @Override
@@ -97,6 +98,9 @@ public class ImageServiceImpl implements ImageService{
         User user = image.getUser();
         user.getImages().remove(image);
         userRepository.save(user);
+        
+        if(user.getProfileId() == imageId)
+            user.setHasProfileImage(false);
     }
     
 }

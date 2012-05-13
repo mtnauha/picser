@@ -73,7 +73,14 @@
                     <ul class="thumbnails">
                         <li class="span4">
                             <a href="#" class="thumbnail">
-                                <img src="${pageContext.request.contextPath}/image/${user.profileId}" />
+                                <c:choose>
+                                    <c:when test="${user.hasProfileImage}">
+                                        <img src="${pageContext.request.contextPath}/image/${user.profileId}" />
+                                    </c:when>
+                                    <c:otherwise>
+                                        Profile
+                                    </c:otherwise>
+                                </c:choose>
                             </a>
                         </li>
                     </ul>
@@ -111,7 +118,7 @@
 
             <sec:authorize access="hasRole('${user.username}')">
                 <div class="row">
-                    <div class="span8">
+                    <div class="span7">
                         <h2>Add images</h2>
                         <form class="form-horizontal" id="form2" enctype="multipart/form-data">
                             <fieldset>
@@ -133,13 +140,18 @@
                                 </div>
 
                                 <div id="descs"></div>
-                                
+
                                 <div class="form-actions">
                                     <button type="button" id="uploadButton" class="btn btn-primary" value="Upload">Upload</button>
                                     <a class="btn" href="${pageContext.request.contextPath}/user/profile/${principalName}">Cancel</a>
                                 </div>
                             </fieldset>
                         </form>
+                    </div>
+                    <div class="span5">
+                        <h2>Upload tips</h2>
+                        <p>You can upload multiple images at once. In file selector window press down CTRL-key and select images you want to upload.</p>
+                        <p>Only image files can be uploaded.</p>
                     </div>
                 </div>
             </sec:authorize>

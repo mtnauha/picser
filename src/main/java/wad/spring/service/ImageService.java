@@ -19,7 +19,7 @@ public interface ImageService {
     
     public byte[] getImageFile(Long imageId);
     
-    public byte[] getProfileImage(String username);
+//    public byte[] getProfileImage(String username);
     
     @PreAuthorize("isAuthenticated()")
     public void setProfileImage(String username, Long imageId);
