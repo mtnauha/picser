@@ -133,11 +133,10 @@
                                 </div>
 
                                 <div id="descs"></div>
-
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <input type="button" id="uploadButton" value="Upload" onclick="startRead()"/>
-                                    </div>
+                                
+                                <div class="form-actions">
+                                    <button type="button" id="uploadButton" class="btn btn-primary" value="Upload">Upload</button>
+                                    <a class="btn" href="${pageContext.request.contextPath}/user/profile/${principalName}">Cancel</a>
                                 </div>
                             </fieldset>
                         </form>
