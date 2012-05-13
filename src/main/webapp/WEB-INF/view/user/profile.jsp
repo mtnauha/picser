@@ -179,7 +179,6 @@
                     url: '${pageContext.request.contextPath}/image/' + target,
                     type: 'DELETE',
                     success: function(result) {
-                        alert("DELETE SUCCESS");
                         location.reload();
                     }
                 });
@@ -192,7 +191,6 @@
                     url: '${pageContext.request.contextPath}/image/setprofile/' + target,
                     type: 'POST',
                     success: function(result) {
-                        alert("SETPROFILE SUCCESS");
                         location.reload();
                     }
                 });
@@ -286,10 +284,6 @@
                 }
             }
             
-            function refreshPage(evt) {
-                location.reload();
-            }
-            
             function sendData(theFile, description) {
                 var data = new FormData();
                 data.append("description", description);
@@ -309,17 +303,17 @@
                 
             }
             
-            var total = 0;
-            
             function uploadProgress(evt) {
                 if (evt.lengthComputable) {
                     percentComplete = percentComplete + (evt.loaded / filesTotalSize);
                     filesTotalSize = filesTotalSize + evt.loaded;
                     var totalComplete = Math.round(percentComplete * 100);
-                    document.getElementById('progressNumber').innerHTML = totalComplete.toString() + '%';
+                    
+                    $("#progressbar").css({width: totalComplete + "%"});
+                    //document.getElementById('progressNumber').innerHTML = totalComplete.toString() + '%';
                 }
                 else {
-                    document.getElementById('progressNumber').innerHTML = 'unable to compute';
+                    $("#progressbar").append("unable to compute");
                 }
             }
 

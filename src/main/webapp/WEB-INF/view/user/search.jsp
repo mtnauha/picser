@@ -77,8 +77,7 @@
                         <input type="text" class="span5" name="username" style="margin: 0 auto; font-size: 1.2em; height: 30px;" data-provide="typeahead" data-items="4" data-source='[${usernames}]'/>
                         <button type="submit" class="btn btn-large"><i class="icon-search"></i></button>
                     </form>
-                    
-                    <c:out value="${usernames}" />
+
                 </div>
             </div>
 
